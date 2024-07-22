@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Page</title>
+    <style>
+        h2 {
+            color: #552e12;
+        }
+        h3 { 
+            color: #ffffff;
+            text-shadow: 0px 0px 10px #1d1d1d;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow-y: auto; /* Enable vertical scrolling */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative; /* Add this line */
+            background-color: #FFF4E0; /* Set default background color */
+        }
+        .container {
+            padding: 20px;
+            text-align: center; /* Center all text inside the container */
+        }
+        footer {
+            background-color: #F7D291;
+            color: #AD6D2D; /* Change text color to match nav color */
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            margin-top: auto;
+            position: sticky;
+        }
+        nav {
+            background-color: #F7D291;
+            color: #AD6D2D; /* Set text color */
+            padding: 10px;
+            width: 100%;
+            text-align: center; /* Center nav links */
+        }
+        nav a {
+            color: #AD6D2D; /* Change link color to match nav text color */
+            text-decoration: none;
+            padding: 0 10px;
+        }
+        p {
+            color: #552e12; /* Change paragraph text color to match h2 */
+        }
+        .login-container {
+            border-radius: 10px;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            padding: 20px;
+        }
+        .login-box input {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        .login-box button {
+            padding: 10px;
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+        }
+        .video-background {
+            position: fixed;
+            right: 0;
+            bottom: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+        }
+        .styled-calendar-container {
+            width: 80%; /* Adjust width to maintain aspect ratio */
+            height: auto;
+            border: none;
+            max-width: 800px; /* Ensure calendar doesn't stretch too much */
+        }
+        /* Add this CSS for the bottom-left image */
+        .bottom-left-image {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            margin: 10px;
+            width: 475px; /* Set the desired width */
+            height: auto; /* Maintain aspect ratio */
+        }
+        .copyright {
+            color: #AD6D2D; /* Match the color of the nav links */
+        }
+        .centered-list {
+            display: inline-block; /* Make the list inline-block to center it */
+            text-align: left; /* Align text to the left */
+        }
+        .centered-list ol {
+            margin-left: 0; /* Remove left margin */
+            padding-left: 20px; /* Add padding to the left */
+        }
+        .centered-list ol li {
+            margin-bottom: 10px; /* Add space between list items */
+        }
+        .centered-list ol li::marker {
+            font-weight: bold; /* Bolden the list markers (numbers) */
+        }
+    </style>
+    <script defer>
+        async function fetchCredentials() {
+            const response = await fetch('credentials.json');
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Failed to load credentials');
+            }
+        }
+
+        async function login() {
+            try {
+                const credentials = await fetchCredentials();
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                if (username === credentials.username && password === credentials.password) {
+                    localStorage.setItem('loggedIn', 'true'); // Set login flag in localStorage
+                    showMainContent();
+                } else {
+                    alert('WROOONNNGG!!! Try again.');
+                }
+            } catch (error) {
+                alert('An error occurred: ' + error.message);
+            }
+        }
+
+        function showMainContent() {
+            document.getElementById('login-container').style.display = 'none';
+            document.getElementById('main-content').style.display = 'block';
+            document.querySelector('.video-background').style.display = 'none';
+            document.querySelector('.bottom-left-image').style.display = 'none';
+            document.body.style.backgroundColor = '#FFF4DB'; // Change background color
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('loggedIn') === 'true') {
+                showMainContent();
+            }
+        });
+    </script>
+</head>
+<body>
+    <video autoplay muted loop class="video-background">
+        <source src="Assets/background-video.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+    
+    <img src="Assets/sign.png" alt="Creighton Mountain House" class="bottom-left-image">
+
+    <div id="login-container" class="login-container">
+        <div class="login-box">
+            <h3>Login</h3>
+            <input type="text" id="username" placeholder="Username">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+    </div>
+    
+    <div id="main-content" style="display:none;">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="Special Thanks.html">Special Thanks</a>
+        </nav>
+        <div class="container">
+            <h2>Calendar for North Carolina House Lodging</h2>
+            <iframe src="https://embed.styledcalendar.com/#UTfOFhjYSP7zzxr0p46h" title="Styled Calendar" class="styled-calendar-container" data-cy="calendar-embed-iframe"></iframe>
+            <script async type="module" src="https://embed.styledcalendar.com/assets/parent-window.js"></script>
+            <h2>Neat webpage, but why?</h2>
+            <p>This site is made for the purpose of booking lodgings at the Creighton mountain house.
+                Bookings are now easier than ever, and of course, easier to track when bookings are 
+                (or aren't) available. </p>
+            <h2>How it works.</h2>
+            <p>To make a booking, follow these steps:</p>
+            <div class="centered-list">
+                <ol>
+                    <li>Click the "Edit Calendar" button at the bottom right of the calendar.</li>
+                    <li>You will then be redirected to Google Calendars. Log in to your Google account.</li>
+                    <li>A text box should pop up right as you enter the site. Click "Add" to include Mountain House Lodgings in your "Other calendars" section.</li>
+                    <li>Edit the days, weeks, or months you would like to book.</li>
+                    <li>Click "Save."</li>
+                    <li>Return to the website and refresh the page. Your changes should appear here automatically!</li>
+                </ol>
+            </div>
+        </div>
+        <footer>
+            <p class="copyright">&copy; 2024 Marcus Creighton</p>
+        </footer>
+    </div>
+</body>
+</html>
