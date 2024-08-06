@@ -1,0 +1,114 @@
+h2 {
+    color: #552e12;
+}
+h3 { 
+    color: #ffffff;
+    text-shadow: 0px 0px 10px #1d1d1d;
+}
+b {
+    color: #552e12; /* Match <b> text color to paragraph color */
+}
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative; /* Add this line */
+    background-color: #FFF4E0; /* Set default background color */
+}
+.container {
+    padding: 20px;
+    text-align: center; /* Center all text inside the container */
+}
+footer {
+    background-color: #F7D291;
+    color: #AD6D2D;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+    margin-top: auto;
+    position: sticky;
+}
+nav {
+    background-color: #F7D291;
+    color: #AD6D2D; /* Set text color */
+    padding: 10px;
+    width: 100%;
+    text-align: center; /* Center nav links */
+}
+nav a {
+    color: #AD6D2D; /* Change link color to match nav text color */
+    text-decoration: none;
+    padding: 0 10px;
+}
+p {
+    color: #552e12; /* Change paragraph text color to match h2 */
+}
+.login-container {
+    border-radius: 10px;
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+}
+.login-box input {
+    display: block;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.login-box button {
+    padding: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+}
+.styled-calendar-container {
+    width: 80%; /* Adjust width to maintain aspect ratio */
+    height: auto;
+    border: none;
+    max-width: 800px; /* Ensure calendar doesn't stretch too much */
+}
+/* Add this CSS for the bottom-left image */
+.bottom-left-image {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin: 10px;
+    width: 475px; /* Set the desired width */
+    height: auto; /* Maintain aspect ratio */
+}
+.centered-list {
+    display: inline-block; /* Make the list inline-block to center it */
+    text-align: left; /* Align text to the left */
+}
+.centered-list ol {
+    margin-left: 0; /* Remove left margin */
+    padding-left: 20px; /* Add padding to the left */
+}
+.centered-list ol li {
+    margin-bottom: 10px; /* Add space between list items */
+}
+.centered-list ol li::marker {
+    font-weight: bold; /* Bolden the list markers (numbers) */
+}
+.thank-item {
+    margin-bottom: 20px;
+}
