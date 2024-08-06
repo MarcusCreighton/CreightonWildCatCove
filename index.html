@@ -3,165 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index Page</title>
-    <style>
-        h2 {
-            color: #552e12;
-        }
-        h3 { 
-            color: #ffffff;
-            text-shadow: 0px 0px 10px #1d1d1d;
-        }
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            overflow-y: auto; /* Enable vertical scrolling */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            position: relative; /* Add this line */
-            background-color: #FFF4E0; /* Set default background color */
-        }
-        .container {
-            padding: 20px;
-            text-align: center; /* Center all text inside the container */
-        }
-        footer {
-            background-color: #F7D291;
-            color: #AD6D2D; /* Change text color to match nav color */
-            text-align: center;
-            padding: 10px 0;
-            width: 100%;
-            margin-top: auto;
-            position: sticky;
-        }
-        nav {
-            background-color: #F7D291;
-            color: #AD6D2D; /* Set text color */
-            padding: 10px;
-            width: 100%;
-            text-align: center; /* Center nav links */
-        }
-        nav a {
-            color: #AD6D2D; /* Change link color to match nav text color */
-            text-decoration: none;
-            padding: 0 10px;
-        }
-        p {
-            color: #552e12; /* Change paragraph text color to match h2 */
-        }
-        .login-container {
-            border-radius: 10px;
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            padding: 20px;
-        }
-        .login-box input {
-            display: block;
-            margin-bottom: 10px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            background-color: rgba(255, 255, 255, 0.8);
-        }
-        .login-box button {
-            padding: 10px;
-            background-color: #333;
-            color: white;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-        }
-        .video-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            z-index: -1;
-        }
-        .styled-calendar-container {
-            width: 80%; /* Adjust width to maintain aspect ratio */
-            height: auto;
-            border: none;
-            max-width: 800px; /* Ensure calendar doesn't stretch too much */
-        }
-        /* Add this CSS for the bottom-left image */
-        .bottom-left-image {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            margin: 10px;
-            width: 475px; /* Set the desired width */
-            height: auto; /* Maintain aspect ratio */
-        }
-        .copyright {
-            color: #AD6D2D; /* Match the color of the nav links */
-        }
-        .centered-list {
-            display: inline-block; /* Make the list inline-block to center it */
-            text-align: left; /* Align text to the left */
-        }
-        .centered-list ol {
-            margin-left: 0; /* Remove left margin */
-            padding-left: 20px; /* Add padding to the left */
-        }
-        .centered-list ol li {
-            margin-bottom: 10px; /* Add space between list items */
-        }
-        .centered-list ol li::marker {
-            font-weight: bold; /* Bolden the list markers (numbers) */
-        }
-    </style>
-    <script defer>
-        async function fetchCredentials() {
-            const response = await fetch('credentials.json');
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error('Failed to load credentials');
-            }
-        }
-
-        async function login() {
-            try {
-                const credentials = await fetchCredentials();
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-
-                if (username === credentials.username && password === credentials.password) {
-                    localStorage.setItem('loggedIn', 'true'); // Set login flag in localStorage
-                    showMainContent();
-                } else {
-                    alert('WROOONNNGG!!! Try again.');
-                }
-            } catch (error) {
-                alert('An error occurred: ' + error.message);
-            }
-        }
-
-        function showMainContent() {
-            document.getElementById('login-container').style.display = 'none';
-            document.getElementById('main-content').style.display = 'block';
-            document.querySelector('.video-background').style.display = 'none';
-            document.querySelector('.bottom-left-image').style.display = 'none';
-            document.body.style.backgroundColor = '#FFF4DB'; // Change background color
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            if (localStorage.getItem('loggedIn') === 'true') {
-                showMainContent();
-            }
-        });
-
-        function redirectToArchive() {
-            window.location.href = "https://terabox.com/s/1puJCzpsGWWrFq8lidYsFbA";
-        }
-    </script>
+    <title>Wildcat Cove</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
 </head>
 <body>
     <video autoplay muted loop class="video-background">
@@ -182,8 +26,8 @@
     
     <div id="main-content" style="display:none;">
         <nav>
-            <a href="index.html">Home</a>
-            <a href="javascript:void(0);" onclick="redirectToArchive()">Archive</a> <!-- Modified this link -->
+            <a href="">Home</a>
+            <a href="https://terabox.com/s/1puJCzpsGWWrFq8lidYsFbA" target="_blank">Archive</a>
             <a href="Special Thanks.html">Special Thanks</a>
         </nav>
         <div class="container">
@@ -209,7 +53,7 @@
             </div>
         </div>
         <footer>
-            <p class="copyright">&copy; 2024 Marcus Creighton</p>
+            <p>Made with ♥️ by Marcus Creighton</p>
         </footer>
     </div>
 </body>
